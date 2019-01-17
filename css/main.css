@@ -43,23 +43,14 @@ a:active{
   content: '';
   position: absolute;
   display: block;
-  width: 120px;
-  height: 1px;
-  background: #ddd;
+  width: 200px;
+  height: 2px;
+  background: #00CED1;
   bottom: 1px;
-  left: calc(50% - 60px);
+  left: calc(50% - 100px);
 }
 
-.section-header h2::after {
-  content: '';
-  position: absolute;
-  display: block;
-  width: 40px;
-  height: 3px;
-  background: #00CED1;
-  bottom: 0;
-  left: calc(50% - 20px);
-}
+
 
 .section-header p {
   text-align: center;
@@ -96,7 +87,8 @@ a:active{
 
 #schedule .schedule-col .img img {
   border-radius: 4px 4px 0 0;
-  width:500px;height:300px;
+  width:500px;
+  height:300px;
 }
 
 #schedule .schedule-col h2 {
@@ -122,6 +114,58 @@ a:active{
   color: #333;
   margin-bottom: 0;
   padding: 0 20px 20px 20px;
+}
+
+
+/* Wedding Party Section */
+
+#wedding-party {
+  padding: 60px 0;
+}
+
+#wedding-party .section-header {
+  margin-bottom: 40px;
+  color:red;
+}
+
+#wedding-party .party-item .party-img {
+  width: 120px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  margin: 0 auto;
+}
+
+#wedding-party .party-item h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+  color: #111;
+}
+
+#wedding-party .party-item p {
+  font-size: 14px;
+  color: #999;
+  margin: 0 0 15px 0;
+}
+
+#wedding-party .owl-nav,
+#wedding-party .owl-dots {
+  margin-top: 0px;
+  text-align: center;
+}
+
+
+#wedding-party .owl-dot {
+  display: inline-block;
+  margin: 0 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ddd;
+}
+
+#wedding-party .owl-dot.active {
+  background-color: #00CED1;
 }
 
 /* Registry Section */
@@ -165,30 +209,4 @@ a:active{
   color: #fff;
 }
 
-/* Nav-Bar  DELETE
 
-.nav-bar ul {
-   list-style-type: none;
-   margin: 0;
-   padding: 0;
-}
-
-.nav-bar li {
-   display: inline;
-}
-
-#footer
-{
-   position: fixed;
-   bottom: 0;
-   background-color: #000;
-   width: 100%;
-   height: 80px;
-}
-
-#footer a,
-#footer a:hover,
-#footer a:active{
-   color: #fff;
-}
-*/
