@@ -95,11 +95,16 @@ a {
   margin: 40px 0 12px 0;
 }
 
-#schedule .schedule-col h3 a {
-  color: #000;
+#schedule .schedule-cols a:hover{
+  text-decoration: none;
 }
 
-#schedule .schedule-col h3 a:hover {
+#schedule .schedule-cols a h3,
+#schedule .schedule-cols a h5 {
+  color: #000
+}
+
+#schedule .schedule-cols h3:hover {
   color: #00CED1;
 }
 
