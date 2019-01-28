@@ -1,4 +1,12 @@
+/*
+
+I am using this color for the website #00CED1
+
+*/
+
+
 /* GENERAL */
+
 div
 {
    text-align: center;
@@ -12,18 +20,41 @@ a {
   transition: 0.5s;
 }
 
+/* Buttons */
+
+.btn-primary {
+    background: #00CED1; 
+    color: #ffffff;
+    border: 0 none;
+}
+
+.btn-primary:hover, 
+.btn-primary:focus, 
+.btn-primary:active, 
+.btn-primary.active {
+    background: #00CED1; 
+    color: #ffffff;
+    border: 0 none;
+}
+
+
 /* Home Section */
 
 #home {
    background-image: url("../img/kiss.jpg"); 
-   background-color: #cccccc; 
+   background-color: #f8f9fa; 
    height: 560px; 
    background-position: center; 
    background-repeat: no-repeat; 
-   background-size: cover;
+   background-size: auto;
 }
 
+
 /* Sections Header */
+
+.section-header {
+  padding: 60px 0;
+}
 
 .section-header h2 {
    font-size: 32px;
@@ -46,8 +77,6 @@ a {
   left: calc(50% - 100px);
 }
 
-
-
 .section-header p {
   text-align: center;
   padding-bottom: 30px;
@@ -57,36 +86,29 @@ a {
 
 /* Schedule Section */
 
-#schedule {
-  background-size: cover;
-  padding: 60px 0 40px 0;
-  position: relative;
-  background: #f8f9fa;
-}
-
-
-#schedule .container {
-  position: relative;
-  z-index: 10;
-}
-
-#schedule .schedule-col {
+.schedule-col {
   background: #fff;
   border-radius: 0 0 4px 4px;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
   margin-bottom: 20px;
 }
 
-#schedule .schedule-col .img {
+.schedule-col:hover{
+  border-style: solid;
+  border-color: #00CED1;
+  border-width: 1px;
+}
+
+.schedule-col .img {
   position: relative;
 }
 
-#schedule .schedule-col .img img {
+.schedule-col .img img {
   border-radius: 4px 4px 0 0;
 
 }
 
-#schedule .schedule-col h2 {
+.schedule-col h2 {
   color: #000;
   text-align: center;
   font-weight: 700;
@@ -95,20 +117,16 @@ a {
   margin: 40px 0 12px 0;
 }
 
-#schedule .schedule-cols a:hover{
+.schedule-cols a:hover{
   text-decoration: none;
 }
 
-#schedule .schedule-cols a h3,
-#schedule .schedule-cols a h5 {
+.schedule-cols a h3,
+.schedule-cols a h5 {
   color: #000
 }
 
-#schedule .schedule-cols h3:hover {
-  color: #00CED1;
-}
-
-#schedule .schedule-col p {
+.schedule-col p {
   font-size: 14px;
   line-height: 24px;
   color: #333;
@@ -119,30 +137,21 @@ a {
 
 /* Wedding Party Section */
 
-#wedding-party {
-  padding: 60px 0;
-}
-
-#wedding-party .section-header {
-  margin-bottom: 40px;
-  color:red;
-}
-
-#wedding-party .party-item .party-img {
+.party-item .party-img {
   width: 120px;
   border-radius: 50%;
   border: 4px solid #fff;
   margin: 0 auto;
 }
 
-#wedding-party .party-item h3 {
+.party-item h3 {
   font-size: 20px;
   font-weight: bold;
   margin: 10px 0 5px 0;
   color: #111;
 }
 
-#wedding-party .party-item p {
+.party-item p {
   font-size: 14px;
   color: #999;
   margin: 0 0 15px 0;
@@ -151,10 +160,6 @@ a {
 
 
 /* Registry Section */
-
-#registry {
-  padding: 60px 0;
-}
 
 #registry img {
   max-width: 30%;
@@ -167,7 +172,16 @@ a {
   opacity: 1;
 }
 
-/* Back to top button */
+
+/* RSVP */
+
+.rsvp-form{
+  display: block;
+  margin-left: 25%;
+}
+
+
+/* Back to top button DELETE */
 
 .back-to-top {
   position: fixed;

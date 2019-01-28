@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block header %}
+			<h2>Gift Registry</h2>
+			<p>If you were thinking of a gift for us to start our married life, some money would make us a very happy husband and wife! If you wish to honour us with a gift we hope that this registries will make it more convenient for you.</p>
+{% endblock header %}
+
+{% block content %}
+		<div id="registry" class="wow fadeInUp">
+			<a href="https://www.zola.com/registry/anaandkevintietheknot" target="_blank">
+  				<img src="{{ url_for('static', filename='img/registry/zola.png') }}" href="" alt="">
+  			</a>
+			<a href="" target="_blank">
+  				<img src="{{ url_for('static', filename='img/registry/wayfair.png') }}" href="" alt="">
+  			</a>
+			<a href="" target="_blank">
+  				<img src="{{ url_for('static', filename='img/registry/amazon.png') }}" href="" alt="">
+  			</a>
+		</div>
+{% endblock content %}

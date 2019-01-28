@@ -5,7 +5,6 @@
 	// Initiate the wowjs animation library
 	new WOW().init();
 
-
 	// Back to top button
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > 100) {

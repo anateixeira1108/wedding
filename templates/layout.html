@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<meta charset="utf-8">
+  	<title>Ana and Kevin Wedding</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  	<!-- Google Fonts -->
+  	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  	<!-- Bootstrap Files -->
+  	<link href="{{ url_for('static', filename='lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+  	<!-- Libraries CSS Files -->
+  	<!-- 
+	<link href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"> 
+	-->
+  	<link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet">
+  	{% block css %}{% endblock %}
+
+  	<!-- Main Stylesheet File -->
+	<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+
+	
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">
+			<img src="{{ url_for('static', filename='img/logo.png') }}" width="60" height="60" alt="">
+		 </a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+	    	<span class="navbar-toggler-icon"></span>
+	  	</button>
+	  	<div class="collapse navbar-collapse" id="navbarText">
+	    	<ul class="navbar-nav mr-auto">
+	      		<li class="nav-item active">
+	        		<a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+	      		</li>
+	      		<li class="nav-item">
+	        		<a class="nav-link" href="/schedule">Schedule</a>
+	      		</li>
+	      		<li class="nav-item">
+	        		<a class="nav-link" href="/wedding-party">Wedding Party</a>
+	      		</li>
+	      		<li class="nav-item">
+	        		<a class="nav-link" href="/registry">Registry</a>
+	      		</li>
+	      		<li class="nav-item">
+	        		<a class="nav-link" href="/rsvp">RSVP</a>
+	      		</li>
+	    	</ul>
+	    	<span class="navbar-text">
+	      		#AnaAndKevinTieTheKnot
+	    	</span>
+	  	</div>
+	</nav>
+
+	<!-- Content -->
+	<div>
+		<main role="main" class="container">
+  			<header class="section-header">
+				{% block header %}{% endblock %}
+			</header>
+
+      		{% block content %}{% endblock %}
+
+        </main>
+
+	</div>
+	<!--
+	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+	-->
+
+	<!-- JavaScript Libraries -->
+  	<script src="{{ url_for('static', filename='lib/jquery/jquery.min.js') }}"></script>
+  	<script src="{{ url_for('static', filename='lib/jquery/jquery-migrate.min.js') }}"></script>
+  	<script src="{{ url_for('static', filename='lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  	<script src="{{ url_for('static', filename='lib/wow/wow.min.js') }}"></script>
+  	{% block js %}{% endblock %}
+
+  	<!-- Template Main Javascript File -->
+  	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

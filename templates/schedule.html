@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block header %}
+			<h2>Schedule</h2>
+			<p>We can't wait to celebrate with you!</p>
+{% endblock header %}
+
+{% block content %}
+
+	  	<div class="row schedule-cols">
+
+		   	<div class="col-md-6 wow fadeInUp">
+		   		<a href="https://goo.gl/maps/qL4coQoYJDx" target="_blank">
+		      	<div class="schedule-col">
+			        <div class="img">
+			          	<img src="{{ url_for('static', filename='img/ceremony.JPG') }}" class="img-thumbnail" alt="">
+			        </div>
+			        <h3 class="title">Our Ceremomy</h3>
+			        <h5>Holy Name of Jesus</h5>
+		        	<p>
+		        		2:00pm - 3:00pm</br>
+		        		345 South Military Trail</br>
+		        		West Palm Beach, FL 33415</br>
+		        	</p>
+		      	</div>
+		      	</a>
+		    </div>
+
+		    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+		    	<a href="https://goo.gl/maps/be774gJDfBv" target="_blank">
+		      	<div class="schedule-col"> 
+		        	<div class="img">
+			          	<img src="{{ url_for('static', filename='img/reception.jpg') }}" class="img-thumbnail" alt="">
+		        	</div>
+		        	<h3 class="title">Our Reception</h3>
+		        	<h5>West Palm Beach Lake Pavilion</h5>
+	        		<p>
+	        			3:00pm - 9:00pm</br>
+	        			101 South Flagler Drive</br>
+	        			West Palm Beach, FL 33401</br>
+	        		</p>			          		
+		      	</div>
+		      	</a>
+		    </div>
+
+	  	</div>
+{% endblock content %}
