@@ -6,15 +6,21 @@
 {% endblock header %}
 
 {% block content %}
-		<div id="registry" class="wow fadeInUp">
-			<a href="https://www.zola.com/registry/anaandkevintietheknot" target="_blank">
-  				<img src="{{ url_for('static', filename='img/registry/zola.png') }}" href="" alt="">
-  			</a>
-			<a href="" target="_blank">
-  				<img src="{{ url_for('static', filename='img/registry/wayfair.png') }}" href="" alt="">
-  			</a>
-			<a href="" target="_blank">
-  				<img src="{{ url_for('static', filename='img/registry/amazon.png') }}" href="" alt="">
-  			</a>
+		<div class="gift-registry row align-items-center">
+			<div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s"" >
+				<a href="https://www.zola.com/registry/anaandkevintietheknot" target="_blank">
+	  				<img src="{{ url_for('static', filename='img/registry/zola.png') }}" href="" alt="">
+	  			</a>
+			</div>
+			<div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s"">
+				<a href="" target="_blank">
+	  				<img src="{{ url_for('static', filename='img/registry/wayfair.png') }}" href="" alt="">
+	  			</a>
+  			</div>
+  			<div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s"">
+				<a href="" target="_blank">
+	  				<img src="{{ url_for('static', filename='img/registry/amazon.png') }}" href="" alt="">
+	  			</a>
+  			</div>
 		</div>
 {% endblock content %}

@@ -161,14 +161,12 @@ a {
 
 /* Registry Section */
 
-#registry img {
-  max-width: 30%;
+.gift-registry img {
+  max-width: 100%;
   opacity: 0.5;
-  transition: 0.3s;
-  padding: 15px 0;
 }
 
-#registry img:hover {
+.gift-registry img:hover {
   opacity: 1;
 }
 
@@ -177,7 +175,6 @@ a {
 
 .rsvp-form{
   display: block;
-  margin-left: 25%;
 }
 
 
