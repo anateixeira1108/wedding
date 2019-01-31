@@ -1,23 +1,9 @@
 from flask import Flask, render_template, url_for, flash, redirect, request
 from wedding import app, db, bcrypt
-from wedding.forms import RegistrationForm, LoginForm
+from wedding.forms import RegistrationForm, LoginForm, InvitationForm
 from wedding.models import User, Invitation
 from flask_login import login_user, current_user, logout_user, login_required
 
-invitations = [
-    {
-        'id': 0,
-        'name': 'Jose Teixeira',
-        'people': 3,
-        'confirmated': 0
-    },
-    {
-        'id': 1,
-        'name': 'Kevin May Sr',
-        'people': 4,
-        'confirmated': 0
-    }
-]
 
 @app.route("/")
 @app.route("/home")
@@ -32,7 +18,7 @@ def schedule():
 
 @app.route("/wedding-party")
 def weddingparty():
-    return render_template('wedding-party.html')
+    return render_template('wedding_party.html')
 
 
 @app.route("/registry")
@@ -84,4 +70,47 @@ def logout():
 @app.route("/guestlist")
 @login_required
 def guestlist():
+    invitations = Invitation.query.all()
     return render_template('guestlist.html', invitations=invitations)
+
+
+@app.route("/guest/new", methods=['GET', 'POST'])
+@login_required
+def new_guest():
+    form = InvitationForm()
+    if form.validate_on_submit():
+        invitation = Invitation(name=form.name.data, max_party_size=form.max_party_size.data, people=form.people.data)
+        db.session.add(invitation)
+        db.session.commit()
+        flash('You added a new guest', 'success')
+        return redirect(url_for('guestlist'))
+    return render_template('create_invitation.html', form=form)
+
+
+@app.route("/guest/<int:invitation_id>/update", methods=['GET', 'POST'])
+@login_required
+def update_invitation(invitation_id):
+    invitation = Invitation.query.get_or_404(invitation_id)
+    form = InvitationForm()
+    if form.validate_on_submit():
+        invitation.name = form.name.data
+        invitation.max_party_size = form.max_party_size.data
+        invitation.people = form.people.data
+        db.session.commit()
+        flash('Your invitation has been updated!', 'success')
+        return redirect(url_for('guestlist', invitation_id=invitation.id))
+    elif request.method == 'GET':
+        form.name.data = invitation.name
+        form.max_party_size.data = invitation.max_party_size
+        form.people.data = invitation.people
+    return render_template('create_invitation.html', form=form)
+
+
+@app.route("/invitation/<int:invitation_id>/delete", methods=['GET', 'POST'])
+@login_required
+def delete_invitation(invitation_id):
+    invitation = Invitation.query.get_or_404(invitation_id)
+    db.session.delete(invitation)
+    db.session.commit()
+    flash('Your invitation has been deleted!', 'success')
+    return redirect(url_for('guestlist'))

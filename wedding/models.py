@@ -18,8 +18,8 @@ class User(db.Model, UserMixin):
 class Invitation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-    people = db.Column(db.Integer, nullable=False, default=1)
-    confirmated = db.Column(db.Integer, nullable=False, default=0)
+    max_party_size = db.Column(db.Integer, nullable=False, default=1)
+    people = db.Column(db.Integer, nullable=False, default=0)
 
     def __repr__(self):
-        return f"Invitation('{self.name}', '{self.people}', '{self.confirmated}')"
+        return f"Invitation('{self.name}', '{self.people}')"

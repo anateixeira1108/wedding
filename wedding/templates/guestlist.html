@@ -1,23 +1,43 @@
 {% extends "layout.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.min.css') }}">
+{% endblock css %}
+
 {% block content %}
+  <div class="table-title">
+      <div class="row">
+          <div class="col-sm-8"><h2>Guest List</h2></div>
+          <div class="col-sm-4">
+              <a type="button" class="btn btn-info add-new" href="{{ url_for('new_guest') }}"><i class="fa fa-plus"></i> Add New</a>
+          </div>
+      </div>
+  </div>
   <table class="table">
     <thead>
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Name on Invitation</th>
-        <th scope="col">Number of people invited</th>
-        <th scope="col">Number of people confirmated</th>
+        <th scope="col">Max party size</th>
+        <th scope="col">Number of people</th>
+        <th scope="col">Options</th>
       </tr>
     </thead>
     <tbody>
     {% for invitation in invitations %}
-      <tr>
+      <tr >
         <td>{{ invitation.id }}</td>
         <td>{{ invitation.name }}</td>
+        <td>{{ invitation.max_party_size }}</td>
         <td>{{ invitation.people }}</td>
-        <td>{{ invitation.confirmated }}</td>
+        <td>
+          <a title="Edit" class="btn btn-info btn-sm mt-1 mb-1" href="{{ url_for('update_invitation', invitation_id=invitation.id) }}"><i class="fa fa-pencil"></i></a>
+          <a title="Delete" class="btn btn-danger btn-sm mt-1 mb-1" href="{{ url_for('delete_invitation', invitation_id=invitation.id) }}"><i class="fa fa-trash"></i></a>
       </tr>
     {% endfor %}
     </tbody>
   </table>
+
+
 {% endblock content %}
+

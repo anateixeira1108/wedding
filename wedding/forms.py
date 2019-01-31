@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, Optional
 from wedding.models import User
 
 class RegistrationForm(FlaskForm):
@@ -22,3 +22,9 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
+
+class InvitationForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()])
+    max_party_size = IntegerField('Max party size', validators=[DataRequired()])
+    people = IntegerField('Number of people', validators=[Optional()])
+    submit = SubmitField('Save Invitation')
