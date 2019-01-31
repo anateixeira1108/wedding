@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block header %}
+    <h2>RSVP for {{name}} </h2>
+{% endblock header %}
+
+{% block content %}
+<div class="wow fadeInUp rsvp-cols">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="col-xs-12 col-sm-10 offset-md-2 col-md-6 offset-md-3">
+                {{ form.party_size.label(class="form-control-label") }}
+                {% if form.party_size.errors %}
+                    {{ form.party_size(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.party_size.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.party_size(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="row ">
+            <div class="col-md-6 wow fadeInUp rsvp-col">
+                <h3 class="title">Ceremomy</h3>
+                <p>
+                    January 18th, 2020 at 2:00pm</br></br>
+                    <b>Holy Name of Jesus</b></br>
+                    345 South Military Trail</br>
+                    West Palm Beach, FL 33415</br>
+                </p>
+                <div class="form-check align-items-center"> 
+                    {{ form.attending_to_ceremony(class="form-check-input") }}
+                    {{ form.attending_to_ceremony.label(class="form-check-label") }}
+                </div>
+            </div>
+            <div class="col-md-6 wow fadeInUp rsvp-col">
+                <h3 class="title">Reception</h3>
+                <p>
+                    January 18th, 2020 at 3:00pm</br></br>
+                    <b>West Palm Beach Lake Pavilion</b></br>
+                    101 South Flagler Drive</br>
+                    West Palm Beach, FL 33401</br>
+                </p>
+                <div class="form-check row align-items-center">
+                    {{ form.attending_to_reception(class="form-check-input") }}
+                    {{ form.attending_to_reception.label(class="form-check-label") }}
+                </div>
+            </div>
+        </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

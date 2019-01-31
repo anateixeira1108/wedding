@@ -1,26 +1,67 @@
 {% extends "layout.html" %}
 
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.min.css') }}">
+{% endblock css %}
+
 {% block header %}
 			<h2>RSVP</h2>
 			<p>Please let us know your plans here. We hope we get to celebrate together!</p>
 {% endblock header %}
 
 {% block content %}
-		<div class="rsvp-form row wow fadeInUp">
-			<form class="form-group name-lookup-form">
-				<div class="col-xs-12 col-sm-10 offset-md-2 col-md-6 offset-md-3">
-					<label>Enter the name on your invitation</label>
-				</div>
-				<div class="col-xs-12 col-sm-10 offset-md-2 col-md-6 offset-md-3">
-					<input type="text" class="form-control" id="" placeholder="e.g. Daniel Smith">
-				</div>
-				<div class="col-xs-12 col-sm-10 offset-md-2 col-md-6 offset-md-3">
-					<button type="submit" class="btn btn-primary">Continue</button>						
-				</div>
-			</form>
-		</div>
-{% endblock content %}
 
-{% block js %}
-  	<!-- Contact Form JavaScript File -->
-{% endblock js %}
+{% if invitations %}
+<div class="wow fadeInUp">
+<h5>Select your invitation</h5>
+	<div class="table-responsive">
+	  <table class="table">
+	    <thead>
+	      <tr>
+	        <th scope="col">Name on Invitation</th>
+	        <th scope="col">Options</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    {% for invitation in invitations %}
+	      <tr >
+	        <td>{{ invitation.name }}</td>
+	        <td>
+	          <a title="Edit" class="btn btn-info btn-sm mt-1 mb-1" href="{{ url_for('update_attendance', invitation_id=invitation.id) }}"><i class="fa fa-hand-pointer-o"></i></a>
+	        </td>
+	      </tr>
+	    {% endfor %}
+	    </tbody>
+	  </table>
+	 </div>
+</div>
+
+{% else %}
+
+<div class="wow fadeInUp">
+    <form  method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="col-xs-12 col-sm-10 offset-md-2 col-md-6 offset-md-3">
+                {{ form.search.label(class="form-control-label") }}
+                {% if form.search.errors %}
+                    {{ form.search(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.search.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.search(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+
+{% endif %}
+
+{% endblock content %}

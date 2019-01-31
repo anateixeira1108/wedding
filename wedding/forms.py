@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, Optional
 from wedding.models import User
 
@@ -25,6 +25,14 @@ class LoginForm(FlaskForm):
 
 class InvitationForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
-    max_party_size = IntegerField('Max party size', validators=[DataRequired()])
-    people = IntegerField('Number of people', validators=[Optional()])
-    submit = SubmitField('Save Invitation')
+    submit = SubmitField('Save')
+ 
+class GuestSearchForm(FlaskForm):
+    search = StringField('Enter the name on your invitation', validators=[DataRequired()])
+    submit = SubmitField('Continue')
+
+class RSVPForm(FlaskForm):
+    party_size = IntegerField('Number of people in your party', validators=[DataRequired()])
+    attending_to_ceremony = BooleanField('Attending?')
+    attending_to_reception = BooleanField('Attending?')
+    submit = SubmitField('Submit RSVP')
