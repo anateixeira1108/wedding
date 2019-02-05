@@ -9,9 +9,15 @@
 {% endblock header %}
 
 {% block content %}
+
+
+
   <div class="wow fadeInUp">
     <div class="float-right">
-      <a type="button" class="btn btn-info" href="{{ url_for('new_guest') }}"><i class="fa fa-plus"></i> Add New</a>   
+      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#totalsModal">
+        Show totals
+      </button>  
+      <a type="button" class="btn btn-info" href="{{ url_for('guests.new_invitation') }}"><i class="fa fa-plus"></i> Add New</a>   
     </div>
     <div class="table-responsive">
       <table class="table">
@@ -26,7 +32,7 @@
         </tr>
       </thead>
       <tbody>
-      {% for invitation in invitations %}
+      {% for invitation in invitations.items %}
         <tr >
           <td>{{ invitation.id }}</td>
           <td>{{ invitation.name }}</td>
@@ -46,15 +52,56 @@
             {% endif %}
           </td>
           <td>
-            <a title="Edit" class="btn btn-info btn-sm mt-1 mb-1" href="{{ url_for('update_invitation', invitation_id=invitation.id) }}"><i class="fa fa-pencil"></i></a>
-            <a title="Delete" class="btn btn-danger btn-sm mt-1 mb-1" href="{{ url_for('delete_invitation', invitation_id=invitation.id) }}"><i class="fa fa-trash"></i></a>
+            <a title="Edit" class="btn btn-info btn-sm mt-1 mb-1" href="{{ url_for('guests.update_invitation', invitation_id=invitation.id) }}"><i class="fa fa-pencil"></i></a>
+            <a title="Delete" class="btn btn-danger btn-sm mt-1 mb-1" href="{{ url_for('guests.delete_invitation', invitation_id=invitation.id) }}"><i class="fa fa-trash"></i></a>
           </td>
         </tr>
       {% endfor %}
+          
       </tbody>
       </table>
+
+    </div>
+    {% for page_num in invitations.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+      {% if page_num %}
+        {% if invitations.page == page_num %}
+          <a class="btn btn-info mb-4" href="{{ url_for('guests.guest_list', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('guests.guest_list', page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+      {% else %}
+        ...
+      {% endif %}
+    {% endfor %}
+  </div>
+
+        <div class="wow fadeInUp total-guests float-left">
+  <h3>Total guests</h3>
+    <div class="row justify-content-center"">
+    <p>For ceremony: {{total_c}}</p>
+    <p>     For reception: {{total_r}}</p>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="totalsModal" tabindex="-1" role="dialog" aria-labelledby="totalsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="totalsModalLabel">Total Guests</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row justify-content-center"">
+          <p>For ceremony: {{total_c}}</p>
+          <p>For reception: {{total_r}}</p>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 
 
 {% endblock content %}

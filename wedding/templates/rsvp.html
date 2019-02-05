@@ -27,7 +27,7 @@
 	      <tr >
 	        <td>{{ invitation.name }}</td>
 	        <td>
-	          <a title="Edit" class="btn btn-info btn-sm mt-1 mb-1" href="{{ url_for('update_attendance', invitation_id=invitation.id) }}"><i class="fa fa-hand-pointer-o"></i></a>
+	          <a title="Edit" class="btn btn-info btn-sm mt-1 mb-1" href="{{ url_for('guests.update_attendance', invitation_id=invitation.id) }}"><i class="fa fa-hand-pointer-o"></i></a>
 	        </td>
 	      </tr>
 	    {% endfor %}
@@ -52,7 +52,7 @@
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.search(class="form-control form-control-lg") }}
+                    {{ form.search(class="form-control form-control-lg", placeholder="Ex. Daniel Smith (not Dr. or Mr. Smith)") }}
                 {% endif %}
             </div>
         </fieldset>
