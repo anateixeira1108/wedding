@@ -1,6 +1,7 @@
-Website in process
+Wedding
+Web application that shows Ana and Kevin wedding's details with RSVP management
 
-Ana and Kevin wedding
+Written in Python using Flask
 
 Author: Ana Teixeira
 Author URL: https://github.com/anateixeira1108

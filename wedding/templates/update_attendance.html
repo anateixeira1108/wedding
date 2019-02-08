@@ -19,7 +19,7 @@
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.party_size(class="form-control form-control-lg") }}
+                    {{ form.party_size(class="form-control form-control-lg", type="number", min="0") }}
                 {% endif %}
             </div>
             <div class="row ">
