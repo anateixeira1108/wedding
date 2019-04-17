@@ -22,4 +22,3 @@ def wedding_party():
 def registry():
     return render_template('registry.html')
 
-
