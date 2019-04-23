@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.min.css') }}">
+{% endblock css %}
+
+{% block header %}
+      <h2>Song Request</h2>
+      <p>Any song that you would love to dance? </p>
+{% endblock header %}
+
+{% block content %}
+    <div class="wow fadeInUp">
+    <div class="float-right"> 
+      <a type="button" class="btn btn-info" href="{{ url_for('songs.new_song') }}"><i class="fa fa-plus"></i> Add New</a>   
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Artist</th>
+          {% if current_user.is_authenticated %}
+            <th scope="col">Options</th>
+          {% endif %}
+        </tr>
+      </thead>
+      <tbody>
+      {% for song in song_list.items %}
+        <tr >
+          <td>{{ song.name }}</td>
+          <td>{{ song.artist }}</td>
+          {% if current_user.is_authenticated %}
+            <td><a title="Delete" class="btn btn-danger btn-sm mt-1 mb-1" href="{{ url_for('songs.delete_song', song_id=song.id) }}"><i class="fa fa-trash"></i></a> </td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+          
+      </tbody>
+      </table>
+
+    </div>
+    {% for page_num in song_list.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+      {% if page_num %}
+        {% if song_list.page == page_num %}
+          <a class="btn btn-info mb-4" href="{{ url_for('songs.song_request', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('songs.song_request', page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+      {% else %}
+        ...
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endblock content %}

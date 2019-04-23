@@ -1,3 +1,4 @@
+from datetime import datetime
 from wedding import db, login_manager
 from flask_login import UserMixin
 
@@ -24,3 +25,23 @@ class Invitation(db.Model):
 
     def __repr__(self):
         return f"Invitation('{self.name}', '{self.party_size}')"
+
+
+class Song(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    artist = db.Column(db.String(100))
+    
+    def __repr__(self):
+        return f"Song('{self.name}', '{self.artist}')"
+
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    author = db.Column(db.String(100), nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    content = db.Column(db.Text, nullable=False)
+
+    def __repr__(self):
+        return f"Post('{self.author}', '{self.date_posted}')"
+

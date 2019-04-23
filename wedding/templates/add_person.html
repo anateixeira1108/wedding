@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block header %}
+    <h2>{{ legend }}</h2>
+{% endblock header %}
+
+{% block content %}
+<div class="wow fadeInUp">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="col-xs-12 col-sm-10 offset-md-2 col-md-6 offset-md-3">
+                {{ form.name.label(class="form-control-label") }}
+                {% if form.name.errors %}
+                    {{ form.name(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.name(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="col-xs-12 col-sm-10 offset-md-2 col-md-6 offset-md-3">
+                {{ form.role.label(class="form-control-label") }}
+                {{ form.role(class="form-control form-control-lg") }}
+            </div>
+            <div class="col-xs-12 col-sm-10 offset-md-2 col-md-6 offset-md-3">
+                {{ form.gender.label(class="form-control-label") }}
+                {{ form.gender(class="form-control form-control-lg") }}
+            </div>
+            
+        </fieldset>
+
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+{% endblock content %}

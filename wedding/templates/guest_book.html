@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.min.css') }}">
+{% endblock css %}
+
+{% block header %}
+      <h2>Guest Book</h2>
+      <p>Please leave well wishes for the new Mr and Mrs. </p>
+{% endblock header %}
+
+{% block content %}
+    <div class="wow fadeInUp">
+    <div class="float-right"> 
+      <a type="button" class="btn btn-info" href="{{ url_for('posts.new_post') }}"><i class="fa fa-plus"></i> Add New</a>   
+    </div>
+    <div class="row align-items-center">
+    {% for post in book.items %}
+      <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s"" >
+          {% if current_user.is_authenticated %}
+            <div class="float-right">
+                <a title="Delete" class="btn btn-danger btn-sm mt-1 mb-1" href="{{ url_for('posts.delete_post', post_id=post.id) }}"><i class="fa fa-trash"></i></a>
+              </div>
+          {% endif %}
+        <article class="media content-section">
+          <div class="media-body">
+            <p class="article-content">{{ post.content }}</p>
+            <div class="article-metadata">
+              <small class="mr-2" href="#">{{ post.author}}</small>
+              <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+            </div>
+          </div>
+        </article>
+      </div>
+    {% endfor %}
+  </div>
+   {% for page_num in book.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+      {% if page_num %}
+        {% if book.page == page_num %}
+          <a class="btn btn-info mb-4" href="{{ url_for('posts.guest_book', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('posts.guest_book', page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+      {% else %}
+        ...
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endblock content %}
