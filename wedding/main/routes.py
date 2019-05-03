@@ -16,9 +16,3 @@ def schedule():
 @main.route("/wedding-party")
 def wedding_party():
     return render_template('wedding_party.html')
-
-
-@main.route("/registry")
-def registry():
-    return render_template('registry.html')
-
